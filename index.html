@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Portfolio of Yiğit Efe Yıldırım, electrical and electronics engineer working between hardware and machine learning.">
+<title>Yiğit Efe Yıldırım Portfolio</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  /* Layout: one calm column; each project is a row with its measured specs on the left and the story on the right. */
+  :root {
+    --bg: #f3f5f7;
+    --surface: #ffffff;
+    --ink: #121c26;
+    --muted: #566474;
+    --line: #d3dae2;
+    --accent: #0b7a75;
+    --accent-soft: #e2f1f0;
+    --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+    --body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0e141b; --surface: #151d26; --ink: #e6ecf2; --muted: #93a1b0;
+      --line: #26323f; --accent: #4fd1c5; --accent-soft: #14302f; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0e141b; --surface: #151d26; --ink: #e6ecf2; --muted: #93a1b0;
+    --line: #26323f; --accent: #4fd1c5; --accent-soft: #14302f; color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg); color: var(--ink);
+    font: 400 16px/1.6 var(--body);
+    padding-block: 48px 72px;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+  .wrap { max-width: 920px; margin: 0 auto; }
+  a { color: var(--accent); text-underline-offset: 3px; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+  header { padding-bottom: 36px; border-bottom: 1px solid var(--line); }
+  .eyebrow { font: 500 12px/1.4 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 0 0 14px; }
+  h1 { font: 700 clamp(2.2rem, 7vw, 3.6rem)/1.02 var(--display); letter-spacing: -.02em; margin: 0 0 16px; text-wrap: balance; }
+  .lede { font-size: 1.15rem; max-width: 40em; margin: 0; color: var(--ink); text-wrap: pretty; }
+
+  section { padding-top: 44px; }
+  h2 { font: 500 12px/1.4 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin: 0 0 22px; }
+
+  .about { max-width: 42em; margin: 0; text-wrap: pretty; }
+
+  .project { display: grid; grid-template-columns: 230px minmax(0, 1fr); gap: 12px 36px; padding: 28px 0; border-top: 1px solid var(--line); }
+  .project:last-of-type { border-bottom: 1px solid var(--line); }
+  h3 { font: 700 1.25rem/1.25 var(--display); letter-spacing: -.01em; margin: 0 0 4px; text-wrap: balance; }
+  .kind { font: 400 12px/1.5 var(--mono); color: var(--muted); margin: 0 0 14px; }
+  .specs { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; font: 400 13px/1.4 var(--mono); }
+  .specs li { padding-left: 12px; border-left: 2px solid var(--accent); color: var(--ink); }
+  .story p { margin: 0 0 12px; max-width: 40em; text-wrap: pretty; }
+  .story p:last-child { margin-bottom: 0; }
+  .story b { font-weight: 600; }
+
+  .flow { list-style: none; margin: 16px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; font: 400 12.5px/1.3 var(--mono); }
+  .flow li { background: var(--accent-soft); color: var(--ink); padding: 7px 10px; border-radius: 3px; }
+  .flow li + li::before { content: "→"; color: var(--accent); margin-right: 8px; font-weight: 500; }
+
+  .also { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; max-width: 44em; }
+  .also li { padding-left: 14px; border-left: 2px solid var(--line); }
+  .also b { font-weight: 600; }
+
+  .work { display: grid; gap: 0; }
+  .job { display: grid; grid-template-columns: 230px minmax(0, 1fr); gap: 4px 36px; padding: 16px 0; border-top: 1px solid var(--line); }
+  .job:last-child { border-bottom: 1px solid var(--line); }
+  .when { font: 400 13px/1.5 var(--mono); color: var(--muted); }
+  .job h3 { font-size: 1.05rem; margin: 0; }
+  .job p { margin: 2px 0 0; color: var(--muted); max-width: 40em; }
+
+  .skills { display: grid; gap: 10px; margin: 0; max-width: 46em; }
+  .skills div { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 4px 20px; }
+  .skills dt { font: 500 12px/1.7 var(--mono); letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+  .skills dd { margin: 0; }
+
+  .contact { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 22px 22px 20px; max-width: 560px; }
+  .contact p { margin: 0 0 10px; }
+  .row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin-bottom: 8px; }
+  .mail { font: 500 15px var(--mono); user-select: all; overflow-wrap: anywhere; }
+  button { font: 500 13px var(--mono); background: transparent; color: var(--accent); border: 1px solid var(--accent); border-radius: 3px; padding: 5px 10px; cursor: pointer; }
+  button:hover { background: var(--accent-soft); }
+  .note { color: var(--muted); font-size: .92rem; margin-top: 12px; }
+
+  @media (max-width: 720px) {
+    body { padding-block: 32px 56px; }
+    .project, .job { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+    .skills div { grid-template-columns: minmax(0, 1fr); }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <p class="eyebrow">Electrical and Electronics Engineer · Ankara, Türkiye · open to Prague</p>
+    <h1>Yiğit Efe Yıldırım</h1>
+    <p class="lede">I work between hardware and machine learning: boards I solder myself, ship command systems I integrate and test, and models that predict what a machine will do next.</p>
+  </header>
+
+  <section>
+    <h2>About</h2>
+    <p class="about">I graduated from Bilkent University in electrical and electronics engineering in 2026 and now work as a hardware engineer on naval combat management systems. Before that I built predictive maintenance models on live factory data at Mercedes-Benz Türk. I care most about engineering that helps people do hard physical work more safely, which is why robots that learn from skilled humans interest me.</p>
+  </section>
+
+  <section>
+    <h2>Selected work</h2>
+
+    <article class="project">
+      <div>
+        <h3>Kensai disaster-response platform</h3>
+        <p class="kind">Senior design project · ML, routing, hardware</p>
+        <ul class="specs">
+          <li>5 damage classes per pixel</li>
+          <li>256×256 patches</li>
+          <li>8-connected A*</li>
+        </ul>
+      </div>
+      <div class="story">
+        <p>A portable, off-grid platform for post-earthquake rescue: a LoRa and Bluetooth sensor transmitter, a receiver, an offline-first phone app and a dashboard for rescuers.</p>
+        <p>I built the <b>damage-assessment backend</b>. A U-Net with a ResNet-34 backbone, trained on the xBD dataset, labels every pixel of an aerial image with one of five damage levels. The damage map becomes a cost grid with buffers around damaged buildings, and an A* planner routes people to an official assembly area, then to the nearest verified open area. It flags helicopter extraction only when no ground route exists, and keeps working on cached results when the network is down. I also contributed to the hardware design: microcontroller, GNSS and LoRa options.</p>
+        <ol class="flow" aria-label="Pipeline">
+          <li>Aerial frame</li><li>U-Net / ResNet-34</li><li>Damage map</li><li>Cost grid</li><li>A* route</li>
+        </ol>
+      </div>
+    </article>
+
+    <article class="project">
+      <div>
+        <h3>Predictive maintenance on factory conveyors</h3>
+        <p class="kind">Mercedes-Benz Türk · LSTM, PLC data</p>
+        <ul class="specs">
+          <li>6 months of data, 1 s sampling</li>
+          <li>5 s prediction horizon</li>
+          <li>2 conveyor types, 2 models</li>
+        </ul>
+      </div>
+      <div class="story">
+        <p>Motor current (and, on the second conveyor type, torque) had been logged every second for six months. I pulled the data straight from the PLCs with Snap7 and trained two LSTM models, one per conveyor type, that predict within the next five seconds whether the current will peak and the machine will raise an error.</p>
+        <p>The goal was simple: give maintenance teams a warning before a stoppage instead of after it.</p>
+      </div>
+    </article>
+
+    <article class="project">
+      <div>
+        <h3>Wideband amplifier with automatic gain control</h3>
+        <p class="kind">Analog design · LTspice, Proteus, hand-soldered PCB</p>
+        <ul class="specs">
+          <li>200 kHz to 2 MHz</li>
+          <li>50 Ω source, 470 Ω load</li>
+          <li>15 V supply, under 100 mA</li>
+        </ul>
+      </div>
+      <div class="story">
+        <p>An amplifier that holds its output near 1 V peak while the input swings from 10 mV to 100 mV, with an AGC loop closing the gain. I calculated the component values and simulated the design in LTspice, where the output stayed between 0.90 and 1.05 V at both ends of the band.</p>
+        <p>I then designed the single-layer PCB with Proteus, fabricated the board and soldered every component myself.</p>
+      </div>
+    </article>
+
+    <article class="project">
+      <div>
+        <h3>Algorithmic trading as a Markov decision process</h3>
+        <p class="kind">Reinforcement learning and dynamic programming</p>
+        <ul class="specs">
+          <li>35,343 states, γ = 0.95</li>
+          <li>V* = 40.70, matched within 1%</li>
+          <li>5 solution methods</li>
+        </ul>
+      </div>
+      <div class="story">
+        <p>I derived the stationary distributions of the market and price processes analytically, built a simulator and checked it against the theory (maximum error 0.0012 over 475,000 samples). Value iteration and policy iteration solve the MDP exactly. Q-learning recovers over 80% of the optimal return from interaction alone.</p>
+        <p>REINFORCE with a baseline suffered from variance. A one-step Actor–Critic nearly doubled its return and cut the bankruptcy rate from 28% to 16%. A policy learned from a model estimated on only 2,000 transitions was indistinguishable from the optimum.</p>
+      </div>
+    </article>
+
+    <article class="project">
+      <div>
+        <h3>Student performance prediction, from scratch</h3>
+        <p class="kind">Statistical learning · no ML libraries</p>
+        <ul class="specs">
+          <li>20 features, 5-fold CV</li>
+          <li>Ridge R² 0.66, MAE 1.40</li>
+        </ul>
+      </div>
+      <div class="story">
+        <p>I implemented ridge regression, a multilayer perceptron (SGD, backpropagation) and a random forest entirely by hand, without any machine learning library, and compared them under one cross-validation setup. Rare high exam scores were handled with oversampling and a weighted loss. Ridge regression won; the neural network and random forest landed near R² 0.47.</p>
+      </div>
+    </article>
+
+    <article class="project">
+      <div>
+        <h3>Lighting-aware reference image editing</h3>
+        <p class="kind">Diffusion models · PyTorch</p>
+        <ul class="specs">
+          <li>Training-free second pass</li>
+          <li>LAB luminance, σ = 60 blur</li>
+        </ul>
+      </div>
+      <div class="story">
+        <p>Inserted objects such as sunglasses often look pasted onto a portrait because their shadows follow the reference photo instead of the scene. I extended an IP-Adapter and LEdits++ pipeline with a second diffusion pass that reads the portrait's lighting (a blurred luminance field turned into a shadow map) and modulates the adapter, using a custom hybrid attention processor with core, ring and inclusion masks. Identity is preserved while the object adopts the scene's illumination.</p>
+      </div>
+    </article>
+
+    <article class="project">
+      <div>
+        <h3>Signature verification on CEDAR</h3>
+        <p class="kind">Computer vision · classical and deep models</p>
+        <ul class="specs">
+          <li>2,640 images, 55 signers</li>
+          <li>About 83% test accuracy (k-NN, HOG)</li>
+        </ul>
+      </div>
+      <div class="story">
+        <p>We compared SVM, random forest, k-NN, XGBoost, logistic regression, an MLP and a ViT on genuine-versus-forged signatures, with HOG and LBP features and a writer-independent split to test generalization to unseen signers. About half of the models were implemented from scratch, the rest came from scikit-learn. k-NN with HOG performed best and HOG clearly beat LBP.</p>
+      </div>
+    </article>
+
+    <div class="project">
+      <div>
+        <h3>Embedded, FPGA and RF</h3>
+        <p class="kind">Smaller builds</p>
+      </div>
+      <ul class="also">
+        <li><b>Seat counter.</b> FPGA people counter on a BASYS-3 with ultrasonic sensors, Arduino and VHDL.</li>
+        <li><b>Autonomous vehicle.</b> Bluetooth-controlled vehicle on an ARM KL25Z board, written in object-oriented C, with obstacle avoidance and path planning to user-set coordinates.</li>
+        <li><b>27 MHz transceiver.</b> Short-range analog transmitter and receiver (TRC-11).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Experience</h2>
+    <div class="work">
+      <div class="job">
+        <div class="when">Aug 2026 to now</div>
+        <div><h3>Hardware Engineer, AYESAŞ</h3><p>Integration, cabling and testing of naval combat management systems, networks over fiber, switches and routers, interface tests and factory acceptance tests. Also trains customer teams.</p></div>
+      </div>
+      <div class="job">
+        <div class="when">Jul to Aug 2025</div>
+        <div><h3>Engineering Intern, Mercedes-Benz Türk</h3><p>Predictive maintenance models on axle line conveyors, described above.</p></div>
+      </div>
+      <div class="job">
+        <div class="when">Aug to Sep 2023</div>
+        <div><h3>I&amp;C Specialist Intern, Enka</h3><p>Measurement and communication studies during start-stop operations at a combined cycle power plant.</p></div>
+      </div>
+      <div class="job">
+        <div class="when">Jul to Aug 2022</div>
+        <div><h3>Engineering Intern, Nanodems</h3><p>Camera integration and C# applications for a security platform.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Skills</h2>
+    <dl class="skills">
+      <div><dt>Machine learning</dt><dd>PyTorch, scikit-learn, CNN, LSTM, U-Net, ViT, reinforcement learning, diffusion models, time-series analysis</dd></div>
+      <div><dt>Software</dt><dd>Python, C, C#, MATLAB, SQL, Git, Linux</dd></div>
+      <div><dt>Hardware</dt><dd>PCB design (DipTrace, Proteus), PCB fabrication, soldering, LTspice, FPGA (VHDL), ARM KL25Z, cabling and system bring-up</dd></div>
+      <div><dt>Integration and test</dt><dd>Interface testing, factory acceptance tests, TCP/IP and UDP networking, technical documentation</dd></div>
+    </dl>
+  </section>
+
+  <section>
+    <h2>Contact</h2>
+    <div class="contact">
+      <p>I am happy to walk through any of this in detail.</p>
+      <div class="row">
+        <span class="mail" id="mail">efe476efe@gmail.com</span>
+        <button type="button" id="copy">Copy</button>
+      </div>
+      <div class="row"><a href="https://www.linkedin.com/in/yigitefeyildirim/">linkedin.com/in/yigitefeyildirim</a></div>
+      <p class="note">Technical reports, source code, schematics and prototypes are available on request, wherever disclosure is permitted.</p>
+    </div>
+  </section>
+</div>
+
+<script>
+  (function () {
+    var btn = document.getElementById("copy");
+    var mail = document.getElementById("mail");
+    btn.addEventListener("click", function () {
+      var done = function () { btn.textContent = "Copied"; setTimeout(function () { btn.textContent = "Copy"; }, 1600); };
+      var select = function () {
+        var r = document.createRange(); r.selectNodeContents(mail);
+        var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+        btn.textContent = "Selected";
+      };
+      try {
+        navigator.clipboard.writeText(mail.textContent).then(done, select);
+      } catch (e) { select(); }
+    });
+  })();
+</script>
+</body>
+</html>
