@@ -1,6 +1,6 @@
 # Yiğit Efe Yıldırım
 
-Electrical and Electronics Engineer (Bilkent University, 2026) working between hardware and machine learning. Currently a Hardware Engineer at AYESAŞ.
+Electrical and Electronics Engineer working between hardware and machine learning. Currently a Hardware Engineer at AYESAŞ.
 
 **Portfolio:** https://yigitefeyildirim.github.io
 
